@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,35 +24,22 @@
   <!-- 카테고리 그리드 -->
   <div class="grid grid-cols-5 gap-4 p-4 text-sm text-center">
     <div>
-      <div class="text-2xl">
-        <img src="static/images/all.jpg" class="inline-block w-24 h-24" />
-        <p class="text-[18px]">전체</p>
-      </div>
+      <a href="{% url 'store_list' 0 %}" class="text-2xl text-center block">
+        <img src="static/images/all.png" class="inline-block w-24 h-24" />
+        <p class="text-[18px]">전체 </p>
+      </a>
     </div>
+    {% for category in categories %}
     <div>
-      <div class="text-2xl">
-        <img src="static/images/카페,디저트.jpg" class="inline-block w-24 h-24" />
-       <p class="text-[18px]">카페/디저트</p>
-      </div>
+      <a href="{% url 'store_list' category.pk %}" class="text-2xl text-center block">
+        <img src="{{ category.icon.url }}" class="inline-block w-24 h-24" />
+        <p class="text-[18px]">{{ category.name }} </p>
+      </a>
     </div>
-    <div>
-      <div class="text-2xl">
-        <img src="static/images/치킨.jpg" class="inline-block w-24 h-24" />
-        <p class="text-[18px]">치킨</p>
-      </div>
-    </div>
-    <div>
-      <div class="text-2xl">
-        <img src="static/images/한식.jpg" class="inline-block w-24 h-24" />
-        <p class="text-[18px]">한식</p>
-      </div>
-    </div>
-    <div>
-      <div class="text-2xl">
-        <img src="static/images/중국집.jpg" class="inline-block w-24 h-24" />
-        <p class="text-[18px]">중국집</p>
-      </div>
-    </div>
+    {% endfor %}
+    
+      
+    
     <!-- 아래에 더 추가 가능 -->
   </div>
 
@@ -65,12 +54,23 @@
   </div>
 
   <!-- 하단 탭 메뉴 -->
-  <div class="fixed bottom-0 w-full bg-white border-t flex justify-around py-2 text-sm">
-    <div class="text-pink-500">🏠<br>홈</div>
-    <div>🎁<br>할인/혜택</div>
-    <div>🧾<br>주문내역</div>
-    <div>❤️<br>찜</div>
-    <div>👤<br>마이요기요</div>
+  <div class="fixed bottom-0 w-full bg-white border-t flex justify-around py-2 text-sm text-center">
+    <div class="text-pink-500">
+      <img src="static/images/홈.png" class="inline-block w-14 h-14" />
+       <br>홈
+    </div>
+    <div><img src="static/images/할인.png" class="inline-block w-14 h-14" />
+       <br>할인/혜택
+    </div>
+    <div><img src="static/images/주문내역.png" class="inline-block w-14 h-14" />
+       <br>주문내역
+    </div>
+    <div><img src="static/images/찜.png" class="inline-block w-14 h-14" />
+       <br>찜
+    </div>
+    <div><img src="static/images/마이페이지.png" class="inline-block w-14 h-14" />
+       <br>마이페이지
+    </div>
   </div>
 
 </body>

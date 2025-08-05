@@ -5,8 +5,8 @@ def category_list(request):
     categories = Category.objects.all()
     return render(request, 'category_list.html', {'categories': categories})
 
-def store_list(request, category_id):
-    category = get_object_or_404(Category, pk=category_id)
+def store_list(request, pk):
+    category = get_object_or_404(Category, pk=pk)
     stores = Store.objects.filter(category=category)
     return render(request, 'store_list.html', {'category': category, 'stores': stores})
 

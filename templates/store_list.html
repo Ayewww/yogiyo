@@ -1,1 +1,34 @@
-해당 카테고리 가게 리스트
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ category.name }} 카테고리</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <div class="container mx-auto px-4 py-6">
+        <h1 class="text-2xl font-bold mb-4">{{ category.name }}</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {% for store in stores %}
+            <a href="{% url 'sotre_detail' store.id %}" class="block bg-white rounded-lg shadow hover:shadow-lg transition">
+                <img src="{{ store.image.url }}", alt="{{ store.name }}" class="w-full h-48 object-cover rounded-t-lg">
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold">{{ store.name }}</h2>
+                    <p class="text-sm text-gray-600 mb-2">{{store.description|truncatechars:50}}</p>
+                    <div class="text-sm text-gray-500">
+                        최소주문: {{ store.min_order_amount|intcomma }}원<br>
+                        배달비: {{ store.delivery_fee|intcomma }}원
+                    </div>
+                </div>
+            </a>
+            {% empty %}
+            <p>등록된 가게가 없습니다</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>
