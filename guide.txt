@@ -1,0 +1,8 @@
+흐름 정리
+카테고리 화면 → category_list.html
+
+카테고리 선택 → store_list.html (해당 카테고리의 가게)
+
+가게 클릭 → store_detail.html (메뉴/리뷰/정보)
+
+주문 → order_form.html → order_complete.html
